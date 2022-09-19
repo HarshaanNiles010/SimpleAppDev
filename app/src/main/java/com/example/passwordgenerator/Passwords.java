@@ -2,8 +2,6 @@ package com.example.passwordgenerator;
 
 public class Passwords {
     private int passwordLength;
-    private final int minLength = 1;
-    private final int maxLength = 64;
     private boolean upperCase;
     private boolean lowerCase;
     private boolean numbeCase;
@@ -29,10 +27,12 @@ public class Passwords {
     }
 
     public int getMaxLength() {
+        int maxLength = 64;
         return maxLength;
     }
 
     public int getMinLength() {
+        int minLength = 1;
         return minLength;
     }
 
