@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 password Password = new password(seekBar.getProgress(),incLowerCase.isChecked(),incUpperCase.isChecked(),
                         incNumbers.isChecked(),incSpecialSymbols.isChecked());
-                textView.setText("The required length is: " + length);
+                textView.setText(Password.getPassword(seekBar.getProgress()));
             }
         });
     }

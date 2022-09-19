@@ -63,17 +63,23 @@ public class password {
     }
 
     public String getPassword(int length){
-        String combinedChar = LOWER + UPPER + NUMBERS + SPECIALSYMBOL;
+        String combinedChar = LOWER;
+        if(this.isUpperCase){
+            combinedChar += UPPER;
+        }
+        if(this.isNumber){
+            combinedChar += NUMBERS;
+        }
+        if(this.isSpecSymbol){
+            combinedChar += SPECIALSYMBOL;
+        }
         Random random = new Random();
         char[] password = new char[length];
-        password[0] = LOWER.charAt(random.nextInt(LOWER.length()));
-        password[1] = UPPER.charAt(random.nextInt(UPPER.length()));
-        password[2] = SPECIALSYMBOL.charAt(random.nextInt(SPECIALSYMBOL.length()));
-        password[3] = NUMBERS.charAt(random.nextInt(NUMBERS.length()));
-        for(int i = 4; i < length; i++){
+        password[0] = combinedChar.charAt(random.nextInt(combinedChar.length()));
+        for(int i = 1; i<length;i++){
             password[i] = combinedChar.charAt(random.nextInt(combinedChar.length()));
         }
-        String newPassword = new String(password);
-        return newPassword;
+
+        return new String(password);
     }
 }
