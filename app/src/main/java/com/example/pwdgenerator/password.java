@@ -59,4 +59,8 @@ public class password {
     public static String getSPECIALSYMBOL() {
         return SPECIALSYMBOL;
     }
+
+    public String getPassword(int length){
+        return "";
+    }
 }

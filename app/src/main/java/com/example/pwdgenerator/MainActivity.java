@@ -2,9 +2,11 @@ package com.example.pwdgenerator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -13,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Switch incLowerCase;
     Switch incNumbers;
     Switch incSpecialSymbols;
+    SeekBar seekBar;
     Button generate;
     TextView textView;
     @Override
@@ -25,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
         incSpecialSymbols = (Switch) findViewById(R.id.incSpecialSymbol);
         generate = (Button) findViewById(R.id.generate);
         textView = (TextView) findViewById(R.id.textView);
-
+        seekBar = (SeekBar) findViewById(R.id.desiredlength);
+        int length = seekBar.getProgress();
         generate.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                textView.setText("Do Whatever");
+                password Password = new password(seekBar.getProgress(),incLowerCase.isChecked(),incUpperCase.isChecked(),
+                        incNumbers.isChecked(),incSpecialSymbols.isChecked());
+                textView.setText("The required length is: " + length);
             }
         });
     }
