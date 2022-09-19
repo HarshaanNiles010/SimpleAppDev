@@ -1,5 +1,7 @@
 package com.example.pwdgenerator;
 
+import java.util.Random;
+
 public class password {
     private static final int minLength = 1;
     private static final int maxLength = 64;
@@ -61,6 +63,17 @@ public class password {
     }
 
     public String getPassword(int length){
-        return "";
+        String combinedChar = LOWER + UPPER + NUMBERS + SPECIALSYMBOL;
+        Random random = new Random();
+        char[] password = new char[length];
+        password[0] = LOWER.charAt(random.nextInt(LOWER.length()));
+        password[1] = UPPER.charAt(random.nextInt(UPPER.length()));
+        password[2] = SPECIALSYMBOL.charAt(random.nextInt(SPECIALSYMBOL.length()));
+        password[3] = NUMBERS.charAt(random.nextInt(NUMBERS.length()));
+        for(int i = 4; i < length; i++){
+            password[i] = combinedChar.charAt(random.nextInt(combinedChar.length()));
+        }
+        String newPassword = new String(password);
+        return newPassword;
     }
 }
